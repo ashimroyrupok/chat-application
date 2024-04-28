@@ -3,7 +3,7 @@ import { FaRegEdit } from "react-icons/fa";
 import MessageCard from "./MessageCard";
 const SideMessageBar = () => {
   return (
-    <div className=" px-7 pt-7  shadow-lg rounded-lg overflow-y-auto overflow-x-hidden h-screen ">
+    <div className=" px-7 pt-7  shadow-lg rounded-lg overflow-y-auto overflow-x-hidden h-[98vh] ">
       <div className=" flex  fixed z-50 bg-[#353535] py-2 -mt-7 justify-between items-center  ">
         <h2 className=" text-xl  ">Chats</h2>
         <Button>

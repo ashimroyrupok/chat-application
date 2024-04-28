@@ -5,20 +5,14 @@ import "react-chat-elements/dist/main.css";
 // import bgImage from "@/components/assests/whatsappBanner.jpg"
 const MessagePage = () => {
   return (
-    <div className=" w-full text-black overflow-y-auto  h-screen  ">
+    <div className=" w-full text-black overflow-y-auto pb-7  h-[98vh]  ">
       <div className=" flex gap-2 items-center py-4 -mt-4 shadow-lg fixed bg-[#353535] z-50 bg-blend-overlay w-full">
         <Avatar />
-        <h1 className="text-white" >Name </h1>
+        <h1 className="text-white">Name </h1>
       </div>
       <div
         className={` w-full  mt-8 `}
-        // style={{
-        //   backgroundImage: 'url("../../assests/whatsappBanner.jpg")',
-        //   backgroundSize: "cover",
-        //   backgroundRepeat: "no-repeat",
-        //   width: "100%",
-        //   height: "100vh",
-        // }}
+        
       >
         <div className="flex justify-end   w-full ">
           <MessageBox
