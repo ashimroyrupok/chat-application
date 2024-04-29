@@ -13,12 +13,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=" bg-[#353535] text-white h-screen  flex  w-full px-2 pt-2 ">
-          <div className="  w-[25vw] " > 
+        <div className=" bg-[#353535] text-white h-screen  lg:flex  w-full px-2 pt-2 ">
+          <div className="  w-screen lg:w-[25vw] " > 
 
           <SideMessageBar />
           </div>
-          <div className=" pl-2  pt-2  chat-banner  w-full "  >
+          <div className=" pl-2  pt-2    w-full "  >
             {children}
         </div>
         </div>
