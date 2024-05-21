@@ -9,7 +9,7 @@ const setToken =async(res,result)=>{
         httpOnly:true,
         sameSite:"none",
         secure:true
-    }).json({message:"user created successfully"})
+    }).json({message:"user login successfully"})
 }
 
 
