@@ -1,37 +1,43 @@
-"use client"
+"use client";
 import { MdEmojiEmotions } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { MdOutlineKeyboardVoice } from "react-icons/md";
 import { LuSendHorizonal } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import io from "socket.io-client";
+let socket;
+
 const TypeMessage = () => {
   const [message, setMessage] = useState("");
-  const [Socket, setSocket] = useState(null);
+  const [messages, setMessages] = useState([]);
+  // const [Socket, setSocket] = useState(null);
 
-  console.log(message)
-
-  const handleSubmit = () => {
-    // const socket = io("http://localhost:5000", {
-    //   withCredentials: true,
-    // });
-    // setSocket(socket);
-  };
+  console.log(messages);
 
   useEffect(() => {
-    
-    if(message){
-      const socket = io("http://localhost:5000", {
-        // withCredentials:true
-        credentials:"include",
-        "Access-Control-Allow-Credentials":true
-      })
-      setSocket(socket)
-      socket.on("chat", { message });
-    }
+     socket = io("http://localhost:5000", {
+      withCredentials: true,
+      transports: ["websocket"],
+    });
+console.log(socket)
+    socket.on("message", (msg) => {
+      console.log("Received message:", msg);
+      console.log(socket?.id)
+      setMessages((prevMessages) => [...prevMessages, msg]);
+    });
 
-    // Socket.on("chat", { message });
-  }, [message, Socket]);
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (message && socket) {
+      socket.emit("message", message);
+      setMessage("");
+    }
+  };
 
   return (
     <div className=" w-full text-white  px-2 bg-[#353535] flex py-4 z-50 gap-1 mt-5  items-center fixed bottom-0 ">
